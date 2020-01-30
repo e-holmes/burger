@@ -1,5 +1,10 @@
 -- Insert queries to populate burgers table with at least three enteries
 
+INSERT INTO burgers (burger_name, devoured) VALUES ('Chicken Ranch Burger', false);
+
+INSERT INTO burgers (burger_name, devoured) VALUES ('Barbaque Bacon Cheeseburger', true);
+INSERT INTO burgers (burger_name, devoured) VALUES ('Taco Burger', false);
+
 
 
 -- Run the schema.sql and seeds.sql files into the mysql server from the command line

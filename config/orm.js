@@ -1,23 +1,38 @@
-// Import (require) connection.js into orm.js
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
-// In the orm.js file, create the methods that will execute the necessary MySQL commands in the controllers. 
-// These are the methods you will need to use in order to retrieve and store data in your database.
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
 
 
-// selectAll()
+function objToSql(ob) {
+  var arr = [];
+
+  for (var key in ob) {
+      arr.push(key + "=" + ob[Key]);
+    }
+
+  return arr.toString();
+}
+
 var orm = {
-    all: function(tableInput, cb) {
-      var queryString = "SELECT * FROM " + tableInput + ";";
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-        cb(result);
-      });
-    },
-// insertOne()
-create: function(table, cols, vals, cb) {
+  all: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  
+  create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -37,10 +52,7 @@ create: function(table, cols, vals, cb) {
       cb(result);
     });
   },
-
-
-// updateOne()
-update: function(table, objColVals, condition, cb) {
+  update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -56,22 +68,8 @@ update: function(table, objColVals, condition, cb) {
 
       cb(result);
     });
-  },
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
-
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
-    });
   }
 };
 
-
-// Export the ORM object in module.exports.
+// Export the orm object for the model (burger.js).
 module.exports = orm;
