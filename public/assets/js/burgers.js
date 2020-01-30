@@ -8,11 +8,12 @@ $(document).ready(function() {
     
 
     // Send the PUT request.
-    $.ajax("/burgers/" + id, {
+    $.ajax({
       method: "PUT",
+      url: "/burgers/" + id
     }).then(
-      function() {
-        console.log("changed devour to", newDevour);
+      function(data) {
+        console.log("changed devour of", id);
         // Reload the page to get the updated list
         location.reload();
       }
