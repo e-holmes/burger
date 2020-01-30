@@ -8,11 +8,13 @@ var burger = {
     });
   },
   create: function(name, cb) {
-    orm.create("burgers", [ "burger_name", "devoured"],
+    orm.create("burgers",
+    [ "burger_name", "devoured"],
     [name, false],
     cb);
   },
   update: function(id, cb) {
+    console.log("Error Here!!!!!!!");
     var condition = "id=" +id;
     orm.update("burgers", {devoured: true}, condition, cb);
     }
