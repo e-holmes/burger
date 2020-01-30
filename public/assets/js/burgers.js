@@ -1,8 +1,10 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready(function() {
-  $(".change-devour").on("submit", function(event) {
+  $(".updateBurger").on("submit", function(event) {
     event.preventDefault();
-    var id = $(this).children("id").val();
+
+    var id = $(this).children(".id").val();
+    console.log(id);
     
 
     // Send the PUT request.

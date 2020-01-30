@@ -11,7 +11,7 @@ onto.  --}}
     {{#unless this.devoured}}
     <li>{{burger_name}}</li>
     <form class="updateBurger">
-      <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+      <input input type="hidden" class="id" type="text" value={{this.id}}><br>
       <button class="change-devour" type="submit" >Devour it!</button>
   </form>
     {{/unless}}
@@ -25,7 +25,7 @@ onto.  --}}
 <ul>
   {{#each burgers}}
     {{#if this.devoured}}
-          <input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+          <input input type="hidden" class="id" type="text" value={{this.id}}><br>
       <li>{{this.burger_name}}</li>
     {{/if}}
   {{/each}}
